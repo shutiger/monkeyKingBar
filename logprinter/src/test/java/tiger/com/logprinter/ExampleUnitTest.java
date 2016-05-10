@@ -1,4 +1,4 @@
-package tiger.com.mkb;
+package tiger.com.logprinter;
 
 import org.junit.Test;
 

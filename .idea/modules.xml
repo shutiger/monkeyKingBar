@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/logprinter/logprinter.iml" filepath="$PROJECT_DIR$/logprinter/logprinter.iml" />
       <module fileurl="file://$PROJECT_DIR$/monkeyKingBar.iml" filepath="$PROJECT_DIR$/monkeyKingBar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/windowlog/windowlog.iml" filepath="$PROJECT_DIR$/windowlog/windowlog.iml" />
     </modules>
   </component>
 </project>

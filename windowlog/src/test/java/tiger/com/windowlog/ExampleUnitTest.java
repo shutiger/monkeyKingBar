@@ -1,4 +1,4 @@
-package tiger.com.mkb;
+package tiger.com.windowlog;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package tiger.com.myapplication;
+package tiger.com.logprinter;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
