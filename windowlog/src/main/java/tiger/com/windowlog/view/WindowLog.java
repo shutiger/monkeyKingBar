@@ -1,4 +1,4 @@
-package tiger.com.windowlog;
+package tiger.com.windowlog.view;
 
 import android.content.Context;
 import android.graphics.PixelFormat;

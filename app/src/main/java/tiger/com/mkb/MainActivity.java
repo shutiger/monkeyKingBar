@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import tiger.com.logprinter.MKBLogType;
 import tiger.com.logprinter.mkblog.JsonLog;
-import tiger.com.logprinter.mkblog.XmlLog;
-import tiger.com.windowlog.WindowLog;
+import tiger.com.windowlog.view.WindowListLog;
 
 public class MainActivity extends AppCompatActivity {
     private static String XML = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><!--  Copyright w3school.com.cn --><note><to>George</to><from>John</from><heading>Reminder</heading><body>Don't forget the meeting!</body></note>";
@@ -18,13 +16,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WindowLog.getInstance().init(getApplicationContext());
-        WindowLog.getInstance().showView();
+        WindowListLog.getInstance().init(getApplicationContext());
+        WindowListLog.getInstance().showView();
         findViewById(R.id.id_text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.e("tiger", JsonLog.transformJsonStyle(JSON, "TEST JSON"));
-                WindowLog.getInstance().log(JsonLog.transformJsonStyle(JSON, "TEST JSON"));
+                WindowListLog.getInstance().log(JsonLog.transformJsonStyle(JSON_LONG, "TEST JSON"));
             }
         });
     }
