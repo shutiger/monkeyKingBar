@@ -3,9 +3,11 @@ package tiger.com.windowlog.view;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 /**
@@ -36,4 +38,21 @@ public class WindowViewFactory {
         return params;
     }
 
+    public static Button buildHideButton(Context context) {
+        final Button hideButton = new Button(context);
+        hideButton.setText("隐");
+        return hideButton;
+    }
+
+    public static WindowManager.LayoutParams buildButtonLayoutParams() {
+        WindowManager.LayoutParams params = new WindowManager.LayoutParams();
+        params.width = 140;
+        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        params.format = PixelFormat.TRANSLUCENT;
+        params.gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
+        params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        return params;
+    }
 }

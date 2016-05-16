@@ -1,4 +1,4 @@
-package tiger.com.windowlog.adapter;
+package tiger.com.windowlog.view.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -26,6 +26,7 @@ public class LogItemAdapter extends BaseAdapter {
     }
 
     public void setLogs(List<String> logs) {
+        mLogs.clear();
         mLogs.addAll(logs);
         notifyDataSetChanged();
     }
