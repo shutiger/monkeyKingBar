@@ -10,6 +10,7 @@ import java.util.List;
 
 import tiger.com.windowlog.model.IDataObserver;
 import tiger.com.windowlog.view.adapter.LogItemAdapter;
+import tiger.com.windowlog.view.viewinterface.IWindowListLogView;
 
 
 /**
