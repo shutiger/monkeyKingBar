@@ -25,7 +25,7 @@ public class WindowViewFactory {
         return listView;
     }
 
-    public static WindowManager.LayoutParams buildWindowManagerParams() {
+    public static WindowManager.LayoutParams buildWindowListLogParams() {
         WindowManager.LayoutParams params = new WindowManager.LayoutParams();
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
         params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -33,8 +33,6 @@ public class WindowViewFactory {
         params.gravity = Gravity.LEFT;
         params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
         params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
-//                    | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-//                    | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
         return params;
     }
 
@@ -44,7 +42,7 @@ public class WindowViewFactory {
         return hideButton;
     }
 
-    public static WindowManager.LayoutParams buildButtonLayoutParams() {
+    public static WindowManager.LayoutParams buildHideButtonLayoutParams() {
         WindowManager.LayoutParams params = new WindowManager.LayoutParams();
         params.width = 140;
         params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -53,6 +51,25 @@ public class WindowViewFactory {
         params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
         params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
                 | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        return params;
+    }
+
+    public static Button buildPassThroughButton(Context context) {
+        final Button passThroughButton = new Button(context);
+        passThroughButton.setText("透");
+        return passThroughButton;
+    }
+
+    public static WindowManager.LayoutParams buildPassThroughButtonLayoutParams() {
+        WindowManager.LayoutParams params = new WindowManager.LayoutParams();
+        params.width = 140;
+        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        params.format = PixelFormat.TRANSLUCENT;
+        params.gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
+        params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        params.y -= 150;
         return params;
     }
 }

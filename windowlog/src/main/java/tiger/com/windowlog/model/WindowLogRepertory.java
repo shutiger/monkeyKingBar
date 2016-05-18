@@ -1,6 +1,7 @@
 package tiger.com.windowlog.model;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 
 /**
@@ -28,7 +29,13 @@ public class WindowLogRepertory {
     }
 
     public void unregisterObserver(IDataObserver observer) {
-        mObservers.remove(observer);
+        if (hasRegister(observer)) {
+            mObservers.remove(observer);
+        }
+    }
+
+    public Boolean hasRegister(IDataObserver observer) {
+        return mObservers.contains(observer);
     }
 
     private void notifyObservers() {

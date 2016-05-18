@@ -21,12 +21,13 @@ public class WindowListLogView implements IWindowListLogView, IDataObserver {
     private Context mContext;
     private WindowManager mWindowManager;
     private WindowManager.LayoutParams mLogListParams;
-    private boolean mTestMode = true;
     private boolean isLogViewShow = false;
     private ListView mListView;
     private LogItemAdapter mLogAdapter;
     private Button mHideButton;
     private WindowManager.LayoutParams mHideButtonParams;
+    private Button mPassThroughButton;
+    private WindowManager.LayoutParams mPassThroughButtonParams;
 
     public WindowListLogView(Context context){
         mContext = context;
@@ -34,12 +35,12 @@ public class WindowListLogView implements IWindowListLogView, IDataObserver {
 
     @Override
     public void showView() {
-        if (mTestMode && mListView == null) {
+        if (mListView == null) {
             mLogAdapter = new LogItemAdapter(mContext);
             mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
 
             mListView = WindowViewFactory.buildWindowListView(mContext, mLogAdapter);
-            mLogListParams = WindowViewFactory.buildWindowManagerParams();
+            mLogListParams = WindowViewFactory.buildWindowListLogParams();
             mWindowManager.addView(mListView, mLogListParams);
 
             mHideButton = WindowViewFactory.buildHideButton(mContext);
@@ -55,19 +56,61 @@ public class WindowListLogView implements IWindowListLogView, IDataObserver {
                     }
                 }
             });
-            mHideButtonParams = WindowViewFactory.buildButtonLayoutParams();
+            mHideButtonParams = WindowViewFactory.buildHideButtonLayoutParams();
             mWindowManager.addView(mHideButton, mHideButtonParams);
+
+            mPassThroughButton = WindowViewFactory.buildPassThroughButton(mContext);
+            mPassThroughButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if ("透".equals(mPassThroughButton.getText())) {
+                        resetLogListParamsFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                        mPassThroughButton.setText("浮");
+                    } else {
+                        resetLogListParamsFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
+                        mPassThroughButton.setText("透");
+                    }
+                }
+            });
+            mPassThroughButtonParams = WindowViewFactory.buildPassThroughButtonLayoutParams();
+            mWindowManager.addView(mPassThroughButton, mPassThroughButtonParams);
 
             isLogViewShow = true;
         }
     }
 
+    private void resetLogListParamsFlags(int flags) {
+        removeAllView();
+        mLogListParams.flags = flags;
+        addAllViewByOrder();
+    }
+
+    private void removeAllView() {
+        mWindowManager.removeView(mHideButton);
+        mWindowManager.removeView(mPassThroughButton);
+        mWindowManager.removeView(mListView);
+    }
+
+    private void addAllViewByOrder() {
+        mWindowManager.addView(mListView, mLogListParams);
+        mWindowManager.addView(mPassThroughButton, mPassThroughButtonParams);
+        mWindowManager.addView(mHideButton, mHideButtonParams);
+    }
+
     @Override
-    public void hideView() {
-        if (mListView != null && mContext != null) {
+    public void closeView() {
+        if (mContext != null) {
             WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
-            wm.removeView(mListView);
-            mListView = null;
+            if (mListView != null) {
+                wm.removeView(mListView);
+                mListView = null;
+            }
+            if (mHideButton != null) {
+                wm.removeView(mHideButton);
+                mHideButton = null;
+            }
             isLogViewShow = false;
         }
     }

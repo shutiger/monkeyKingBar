@@ -7,5 +7,5 @@ package tiger.com.windowlog.view;
  */
 public interface IWindowListLogView {
     void showView();
-    void hideView();
+    void closeView();
 }
