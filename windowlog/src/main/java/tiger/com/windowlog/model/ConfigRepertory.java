@@ -10,6 +10,19 @@ public class ConfigRepertory {
     private int mLogType;
     private int mLogLevel;
     private int mLogMaxShowCount;
+    private boolean isLogScrollOpen = true;
+    private static ConfigRepertory mConfigRepertory = new ConfigRepertory();
+
+    private ConfigRepertory() {
+
+    }
+
+    public static ConfigRepertory getInstance() {
+        if (mConfigRepertory == null) {
+            mConfigRepertory = new ConfigRepertory();
+        }
+        return mConfigRepertory;
+    }
 
     public int getLogType() {
         return mLogType;
@@ -33,5 +46,13 @@ public class ConfigRepertory {
 
     public void setLogMaxShowCount(int logMaxShowCount) {
         mLogMaxShowCount = logMaxShowCount;
+    }
+
+    public boolean isLogScrollOpen() {
+        return isLogScrollOpen;
+    }
+
+    public void setLogScrollOpen(boolean logScrollOpen) {
+        isLogScrollOpen = logScrollOpen;
     }
 }

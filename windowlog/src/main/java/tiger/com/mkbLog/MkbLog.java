@@ -12,7 +12,7 @@ public class MkbLog {
     private String mLogMessage;
 
     private MkbLog(String logMessage) {
-        this("tiger", logMessage);
+        this("tag_tiger", logMessage);
     }
 
     private MkbLog(String logTag, String logMessage) {
@@ -30,15 +30,44 @@ public class MkbLog {
         mLogMessage = logMessage;
     }
 
+    /**
+     * 构建一个MKBLog
+     * @param logMessage log信息
+     * @return MKBLog
+     */
     public static MkbLog buildMkbLog(String logMessage) {
         return new MkbLog(logMessage);
     }
+
+    /**
+     * 构建一个MKBLog
+     * @param logTag tag
+     * @param logMessage message
+     * @return MKBLog
+     */
     public static MkbLog buildMkbLog(String logTag, String logMessage) {
         return new MkbLog(logTag, logMessage);
     }
+
+    /**
+     * 构建一个MKBLog
+     * @param logLevel
+     * @param logTag
+     * @param logMessage
+     * @return
+     */
     public static MkbLog buildMkbLog(int logLevel, String logTag, String logMessage) {
         return new MkbLog(logLevel, logTag, logMessage);
     }
+
+    /**
+     * 构建一个MKBLog
+     * @param logType type
+     * @param logLevel level
+     * @param logTag tag
+     * @param logMessage message
+     * @return
+     */
     public static MkbLog buildMkbLog(int logType, int logLevel, String logTag, String logMessage) {
         return new MkbLog(logType, logLevel, logTag, logMessage);
     }

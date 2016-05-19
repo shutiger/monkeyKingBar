@@ -9,6 +9,7 @@ import android.widget.ListView;
 import java.util.List;
 
 import tiger.com.mkbLog.MkbLog;
+import tiger.com.windowlog.model.ConfigRepertory;
 import tiger.com.windowlog.model.IDataObserver;
 import tiger.com.windowlog.view.adapter.LogItemAdapter;
 import tiger.com.windowlog.view.viewinterface.IWindowListLogView;
@@ -120,6 +121,9 @@ public class WindowListLogView implements IWindowListLogView, IDataObserver {
     @Override
     public void update(List<MkbLog> logs) {
         mLogAdapter.setLogs(logs);
+        if (ConfigRepertory.getInstance().isLogScrollOpen()) {
+            mListView.setSelection(mListView.getBottom());
+        }
     }
 
     public boolean isLogViewShow() {
