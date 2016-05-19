@@ -1,8 +1,9 @@
 package tiger.com.windowlog.model;
 
 import java.util.ArrayList;
-import java.util.BitSet;
 import java.util.List;
+
+import tiger.com.mkbLog.MkbLog;
 
 /**
  * Created by yinghu.gyh on 2016/5/13.
@@ -10,7 +11,7 @@ import java.util.List;
  * @version 1.0
  */
 public class WindowLogRepertory {
-    private List<String> mLogs = new ArrayList<>();
+    private List<MkbLog> mLogs = new ArrayList<>();
     private List<IDataObserver> mObservers = new ArrayList<>();
     private static WindowLogRepertory mWindowLogRepertory = new WindowLogRepertory();
 
@@ -44,7 +45,7 @@ public class WindowLogRepertory {
         }
     }
 
-    public void updateLog(String log) {
+    public void updateLog(MkbLog log) {
         mLogs.add(log);
         notifyObservers();
     }

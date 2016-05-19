@@ -2,6 +2,7 @@ package tiger.com.windowlog.controller;
 
 import android.content.Context;
 
+import tiger.com.mkbLog.MkbLog;
 import tiger.com.windowlog.model.WindowLogRepertory;
 import tiger.com.windowlog.view.WindowListLogView;
 
@@ -32,7 +33,7 @@ public class WindowListLogController {
      * 显示log
      * @param log log
      */
-    public void log(String log) {
+    public void log(MkbLog log) {
         WindowLogRepertory.getInstance().updateLog(log);
     }
 

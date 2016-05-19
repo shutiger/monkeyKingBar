@@ -9,6 +9,7 @@ public class ConfigRepertory {
     //// TODO: 2016/5/18  
     private int mLogType;
     private int mLogLevel;
+    private int mLogMaxShowCount;
 
     public int getLogType() {
         return mLogType;
@@ -24,5 +25,13 @@ public class ConfigRepertory {
 
     public void setLogLevel(int logLevel) {
         mLogLevel = logLevel;
+    }
+
+    public int getLogMaxShowCount() {
+        return mLogMaxShowCount;
+    }
+
+    public void setLogMaxShowCount(int logMaxShowCount) {
+        mLogMaxShowCount = logMaxShowCount;
     }
 }

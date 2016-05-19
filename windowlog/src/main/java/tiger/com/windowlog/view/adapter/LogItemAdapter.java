@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import tiger.com.mkbLog.MkbLog;
 import tiger.com.windowlog.R;
 
 /**
@@ -19,13 +20,13 @@ import tiger.com.windowlog.R;
  */
 public class LogItemAdapter extends BaseAdapter {
     private Context mContext;
-    private List<String> mLogs = new ArrayList<>();
+    private List<MkbLog> mLogs = new ArrayList<>();
 
     public LogItemAdapter(Context context) {
         mContext = context;
     }
 
-    public void setLogs(List<String> logs) {
+    public void setLogs(List<MkbLog> logs) {
         mLogs.clear();
         mLogs.addAll(logs);
         notifyDataSetChanged();
@@ -55,7 +56,7 @@ public class LogItemAdapter extends BaseAdapter {
             convertView.setTag(holder);
         }
         holder = (Holder) convertView.getTag();
-        holder.getText().setText(mLogs.get(position));
+        holder.getText().setText(mLogs.get(position).getLogMessage());
         return convertView;
     }
 

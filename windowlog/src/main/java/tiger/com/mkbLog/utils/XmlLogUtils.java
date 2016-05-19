@@ -1,4 +1,4 @@
-package tiger.com.logprinter.mkblog;
+package tiger.com.mkbLog.utils;
 
 import android.util.Log;
 
@@ -12,21 +12,20 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-import tiger.com.logprinter.MKBUtils;
-
 /**
+ * 目前该类未提供转换方法，主要是因为还没找到使用的地方，如果有，可以再丰富该类
  * Created by yinghu.gyh on 2016/5/10.
  *
  * @version 1.0
  */
-public class XmlLog {
+public class XmlLogUtils {
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
     private static final String NULL_TIPS = "Log with null object";
 
     public static void printXml(String tag, String xml, String headString) {
 
         if (xml != null) {
-            xml = XmlLog.formatXML(xml);
+            xml = XmlLogUtils.formatXML(xml);
             xml = headString + "\n" + xml;
         } else {
             xml = headString + NULL_TIPS;

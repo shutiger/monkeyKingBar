@@ -1,7 +1,10 @@
-package tiger.com.logprinter;
+package tiger.com.mkbLog.utils;
 
 import android.text.TextUtils;
 import android.util.Log;
+
+import tiger.com.mkbLog.MKBLogType;
+import tiger.com.mkbLog.MkbLog;
 
 /**
  * Created by yinghu.gyh on 2016/5/10.

@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import tiger.com.logprinter.mkblog.JsonLog;
+import tiger.com.mkbLog.MkbLog;
+import tiger.com.mkbLog.utils.JsonLogUtils;
 import tiger.com.windowlog.controller.WindowListLogController;
-import tiger.com.windowlog.view.WindowListLogView;
 
 public class MainActivity extends AppCompatActivity {
     private static String XML = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><!--  Copyright w3school.com.cn --><note><to>George</to><from>John</from><heading>Reminder</heading><body>Don't forget the meeting!</body></note>";
@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.id_text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("tiger", JsonLog.transformJsonStyle(JSON, "TEST JSON"));
-                WindowListLogController.getInstance().log(JsonLog.transformJsonStyle(JSON, "TEST JSON"));
+                Log.e("tiger", JsonLogUtils.transformJsonStyle(JSON, "TEST JSON"));
+                WindowListLogController.getInstance().log(MkbLog.buildMkbLog(JsonLogUtils.transformJsonStyle(JSON, "TEST JSON")));
             }
         });
     }

@@ -1,1 +1,1 @@
-include ':app', ':logprinter', ':windowlog'
+include ':app', ':windowlog'
