@@ -1,5 +1,10 @@
 package tiger.com.mkbLog;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import tiger.com.mkbLog.utils.JsonLogUtils;
+
 /**
  * Created by yinghu.gyh on 2016/5/18.
  *
@@ -28,6 +33,23 @@ public class MkbLog {
         mLogLevel = logLevel;
         mLogTag = logTag;
         mLogMessage = logMessage;
+        formatLogMessage();
+    }
+
+    private void formatLogMessage() {
+        if (MKBLogType.JSON == mLogType) {
+            int begin = mLogMessage.indexOf("{");
+            int end = mLogMessage.lastIndexOf("}");
+            String jsonStr = mLogMessage.substring(begin, end + 1);
+            try {
+                new JSONObject(jsonStr);
+                mLogMessage = JsonLogUtils.transformJsonStyle(jsonStr, mLogTag);
+            } catch (JSONException e) {
+                mLogType = MKBLogType.Normal;
+            }
+        } else if (MKBLogType.WDM == mLogType) {
+            //TODO
+        }
     }
 
     /**
@@ -51,9 +73,9 @@ public class MkbLog {
 
     /**
      * 构建一个MKBLog
-     * @param logLevel
-     * @param logTag
-     * @param logMessage
+     * @param logLevel level
+     * @param logTag tag
+     * @param logMessage message
      * @return
      */
     public static MkbLog buildMkbLog(int logLevel, String logTag, String logMessage) {
@@ -70,6 +92,14 @@ public class MkbLog {
      */
     public static MkbLog buildMkbLog(int logType, int logLevel, String logTag, String logMessage) {
         return new MkbLog(logType, logLevel, logTag, logMessage);
+    }
+
+    public int getLogType() {
+        return mLogType;
+    }
+
+    public void setLogType(int logType) {
+        mLogType = logType;
     }
 
     public int getLogLevel() {

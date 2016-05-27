@@ -3,6 +3,7 @@ package tiger.com.windowlog.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import tiger.com.mkbLog.MKBLogFilter;
 import tiger.com.mkbLog.MkbLog;
 
 /**
@@ -46,8 +47,30 @@ public class WindowLogRepertory {
     }
 
     public void updateLog(MkbLog log) {
-        mLogs.add(log);
-        notifyObservers();
+        List<MkbLog> logList = new ArrayList<>();
+        logList.add(log);
+        List<MkbLog> filterList = MKBLogFilter.filterMkbLogs(logList);
+        if (filterList.size() > 0) {
+            addAllLogs(filterList);
+            notifyObservers();
+        }
+    }
+
+    public void updateLog(List<MkbLog> logs) {
+        List<MkbLog> filterList = MKBLogFilter.filterMkbLogs(logs);
+        if (filterList.size() > 0) {
+            addAllLogs(filterList);
+            notifyObservers();
+        }
+    }
+
+    private void addAllLogs(List<MkbLog> logs) {
+        mLogs.addAll(logs);
+        if (mLogs.size() > ConfigRepertory.getInstance().getLogMaxShowCount()) {
+            for (int i = 0; i < ConfigRepertory.getInstance().getLogMaxShowCount() - mLogs.size(); i++) {
+                mLogs.remove(0);
+            }
+        }
     }
 
     public void clearLog() {

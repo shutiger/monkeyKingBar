@@ -2,6 +2,8 @@ package tiger.com.windowlog.controller;
 
 import android.content.Context;
 
+import java.util.List;
+
 import tiger.com.mkbLog.MkbLog;
 import tiger.com.windowlog.model.WindowLogRepertory;
 import tiger.com.windowlog.view.WindowListLogView;
@@ -35,6 +37,14 @@ public class WindowListLogController {
      */
     public void log(MkbLog log) {
         WindowLogRepertory.getInstance().updateLog(log);
+    }
+
+    /**
+     * 显示logs
+     * @param logs log
+     */
+    public void log(List<MkbLog> logs) {
+        WindowLogRepertory.getInstance().updateLog(logs);
     }
 
     /**

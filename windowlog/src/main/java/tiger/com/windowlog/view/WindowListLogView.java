@@ -122,7 +122,7 @@ public class WindowListLogView implements IWindowListLogView, IDataObserver {
     public void update(List<MkbLog> logs) {
         mLogAdapter.setLogs(logs);
         if (ConfigRepertory.getInstance().isLogScrollOpen()) {
-            mListView.setSelection(mListView.getBottom());
+            mListView.setSelection(logs.size() - 1);
         }
     }
 

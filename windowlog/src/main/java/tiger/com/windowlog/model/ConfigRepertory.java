@@ -9,7 +9,8 @@ public class ConfigRepertory {
     //// TODO: 2016/5/18  
     private int mLogType;
     private int mLogLevel;
-    private int mLogMaxShowCount;
+    private int mLogMaxShowCount = 100;
+    private int mLogMaxStoreCount = 1000;
     private boolean isLogScrollOpen = true;
     private static ConfigRepertory mConfigRepertory = new ConfigRepertory();
 
@@ -46,6 +47,14 @@ public class ConfigRepertory {
 
     public void setLogMaxShowCount(int logMaxShowCount) {
         mLogMaxShowCount = logMaxShowCount;
+    }
+
+    public int getLogMaxStoreCount() {
+        return mLogMaxStoreCount;
+    }
+
+    public void setLogMaxStoreCount(int logMaxStoreCount) {
+        mLogMaxStoreCount = logMaxStoreCount;
     }
 
     public boolean isLogScrollOpen() {

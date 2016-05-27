@@ -32,7 +32,9 @@ public class WindowViewFactory {
         params.format = PixelFormat.TRANSLUCENT;
         params.gravity = Gravity.LEFT;
         params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
-        params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
+        params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
         return params;
     }
 
@@ -56,7 +58,7 @@ public class WindowViewFactory {
 
     public static Button buildPassThroughButton(Context context) {
         final Button passThroughButton = new Button(context);
-        passThroughButton.setText("透");
+        passThroughButton.setText("浮");
         return passThroughButton;
     }
 
